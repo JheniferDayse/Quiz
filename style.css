@@ -1,0 +1,95 @@
+html, body {
+  height: 100%;
+}
+
+body{
+  background-color: #0a4549;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+  }
+
+  input[type="radio"]{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  #answers{
+    display: flex;
+    flex-direction: column;
+    padding: .5em 2em;
+    background: #0d5155;
+    color: #fefff0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+  }
+
+  #congrats{
+    opacity: 0;
+  }
+  .ans{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ans:not(:last-child){
+    border-bottom: 1px solid white;
+  }
+  label{
+    position: relative;
+    font-size: 1.5em;
+    flex-grow: 1;
+    margin: 1em 0;
+  }
+  label:first-child:after, label:last-child:after{
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50%-.5em);
+    width: 1em;
+    height: 1em;
+    background-color: #c5d2ab;    
+  }
+  label:first-child{
+    padding-left: 2em;
+    margin-right: 1em;    
+  }
+  label:last-child{
+    padding-right: 2em;
+    margin-left: 1em;    
+  }
+  label:first-child:after{
+    left: 0;    
+  }
+  label:last-child:after{
+    right: 0;
+  }
+
+  #length:checked ~ main [for="length"]:first-child:after,
+  #lenght:checked ~ main [for="lenght"]:last-child:after,
+  #width:checked ~ main [for="width"]:first-child:after,
+  #widht:checked ~ main [for="widht"]:last-child:after,
+  #heigth:checked ~ main [for="heigth"]:first-child:after,
+  #height:checked ~ main [for="height"]:last-child:after{
+    background-color: #d6ff00;
+    box-shadow: 0 0 0 2px #0d5155, 0 0 0 5px #d6ff00; 
+  }
+  #length:checked ~ #width:checked ~ #height:checked ~ main #congrats{
+    transition: .5s opacity;
+    opacity: 1;
+  }
